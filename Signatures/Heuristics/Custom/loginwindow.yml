@@ -1,0 +1,13 @@
+name: HEUR_LOGINWINDOW
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - commandLine+contains: "com.apple.loginwindow"
+    threshold:
+      total:
+        amount: 1

@@ -1,0 +1,13 @@
+name: HEUR_APPLE_NOTES_FILES_MANIPULATION
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - commandLine+contains: "NoteStore.sqlite"
+    threshold:
+      total:
+        amount: 1

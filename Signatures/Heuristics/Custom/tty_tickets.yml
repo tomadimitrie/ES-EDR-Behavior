@@ -1,0 +1,13 @@
+name: HEUR_TTY_TICKETS
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - commandLine+contains: "tty_tickets"
+    threshold:
+      total:
+        amount: 1

@@ -1,0 +1,24 @@
+name: HEUR_DETECT_VIRTUALIZATION
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - allOf:
+            - path+ends: "/ioreg"
+            - commandLine+contains: "-l"
+        - allOf:
+            - path+ends: "/sysctl"
+            - commandLine+contains: "hw.model"
+        - allOf:
+            - path+ends: "/csrutil"
+            - commandLine+contains: "status"
+        - allOf:
+            - path+ends: "/system_profiler"
+            - commandLine+contains: "SPHardwareDataType"
+    threshold:
+      total:
+        amount: 1

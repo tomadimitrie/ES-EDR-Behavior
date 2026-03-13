@@ -1,0 +1,13 @@
+name: HEUR_DATE_USAGE
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/date"
+    threshold:
+      total:
+        amount: 1

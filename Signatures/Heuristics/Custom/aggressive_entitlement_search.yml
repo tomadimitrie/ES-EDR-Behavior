@@ -1,0 +1,15 @@
+name: HEUR_AGGRESSIVE_ENTITLEMENT_SEARCH
+points: 50
+onDuplicate: ignore
+tags: []
+match:
+- heuristic:
+    name: HEUR_ENUM_APPS
+    threshold:
+      total:
+        amount: 1
+- heuristic:
+    name: HEUR_INSPECT_ENTITLEMENTS
+    threshold:
+      total:
+        amount: 1

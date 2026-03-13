@@ -1,0 +1,16 @@
+name: HEUR_CURL_CUSTOM_USER_AGENT
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/curl"
+        - anyOf:
+            - args+contains: "-A"
+            - args+contains: "--user-agent"
+    threshold:
+      total:
+        amount: 1

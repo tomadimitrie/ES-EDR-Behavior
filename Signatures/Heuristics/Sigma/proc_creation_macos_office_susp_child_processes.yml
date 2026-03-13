@@ -1,0 +1,77 @@
+name: HEUR_SUSPICIOUS_MICROSOFT_OFFICE_CHILD_PROCESS_-_MACOS
+points: 1
+onDuplicate: ignore
+tags:
+- attack.execution
+- attack.persistence
+- attack.t1059.002
+- attack.t1137.002
+- attack.t1204.002
+match:
+- event:
+    name: EXEC
+    threshold:
+      total:
+        amount: 1
+    restrict:
+      allOf:
+      - anyOf:
+        - parentPath+contains: Microsoft Word
+        - parentPath+contains: Microsoft Excel
+        - parentPath+contains: Microsoft PowerPoint
+        - parentPath+contains: Microsoft OneNote
+      - anyOf:
+        - path+ends: /bash
+        - path+ends: /curl
+        - path+ends: /dash
+        - path+ends: /fish
+        - path+ends: /osacompile
+        - path+ends: /osascript
+        - path+ends: /sh
+        - path+ends: /zsh
+        - path+ends: /python
+        - path+ends: /python3
+        - path+ends: /wget
+    _original_: |
+      title: Suspicious Microsoft Office Child Process - MacOS
+      id: 69483748-1525-4a6c-95ca-90dc8d431b68
+      status: test
+      description: Detects suspicious child processes spawning from microsoft office suite applications such as word or excel. This could indicates malicious macro execution
+      references:
+          - https://redcanary.com/blog/applescript/
+          - https://objective-see.org/blog/blog_0x4B.html
+      author: Sohan G (D4rkCiph3r)
+      date: 2023-01-31
+      modified: 2023-02-04
+      tags:
+          - attack.execution
+          - attack.persistence
+          - attack.t1059.002
+          - attack.t1137.002
+          - attack.t1204.002
+      logsource:
+          product: macos
+          category: process_creation
+      detection:
+          selection:
+              ParentImage|contains:
+                  - 'Microsoft Word'
+                  - 'Microsoft Excel'
+                  - 'Microsoft PowerPoint'
+                  - 'Microsoft OneNote'
+              Image|endswith:
+                  - '/bash'
+                  - '/curl'
+                  - '/dash'
+                  - '/fish'
+                  - '/osacompile'
+                  - '/osascript'
+                  - '/sh'
+                  - '/zsh'
+                  - '/python'
+                  - '/python3'
+                  - '/wget'
+          condition: selection
+      falsepositives:
+          - Unknown
+      level: high

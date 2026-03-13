@@ -1,0 +1,17 @@
+name: HEUR_SHELL_SCRIPT_EXEC
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - anyOf:
+            - path+ends: "/sh"
+            - path+ends: "/bash"
+            - path+ends: "/zsh"
+        - commandLine+contains: ".sh"
+    threshold:
+      total:
+        amount: 1

@@ -1,0 +1,17 @@
+name: HEUR_LOG_ERASE
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - allOf:
+            - commandLine+contains: "/var/log"
+        - allOf:
+            - path+ends: "/log"
+            - args+contains: "erase"
+    threshold:
+      total:
+        amount: 1

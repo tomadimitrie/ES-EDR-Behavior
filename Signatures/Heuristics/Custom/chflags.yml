@@ -1,0 +1,13 @@
+name: HEUR_CHFLAGS
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/chflags"
+    threshold:
+      total:
+        amount: 1

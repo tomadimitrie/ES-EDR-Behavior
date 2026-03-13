@@ -1,0 +1,13 @@
+name: HEUR_WHOIS_USAGE
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/whois"
+    threshold:
+      total:
+        amount: 1

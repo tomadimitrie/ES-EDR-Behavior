@@ -1,0 +1,14 @@
+name: HEUR_KEYCHAIN_IMPORT
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/security"
+        - args+contains: "import"
+    threshold:
+      total:
+        amount: 1

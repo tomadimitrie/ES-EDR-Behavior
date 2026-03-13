@@ -1,0 +1,13 @@
+name: HEUR_BASE64_USAGE
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/base64"
+    threshold:
+      total:
+        amount: 1

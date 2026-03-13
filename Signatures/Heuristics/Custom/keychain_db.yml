@@ -1,0 +1,13 @@
+name: HEUR_KEYCHAIN_DB
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - commandLine+contains: "Library/Keychains"
+    threshold:
+      total:
+        amount: 1

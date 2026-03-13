@@ -1,0 +1,13 @@
+name: HEUR_PROXY_VIA_ENV_VAR
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - env+containsInner: "http_proxy"
+    threshold:
+      total:
+        amount: 1

@@ -1,0 +1,25 @@
+name: HEUR_SECURITY_SOLUTIONS_DISCOVERY
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - commandLine+contains: "Little Snitch"
+        - commandLine+contains: "CbOsxSensorService"
+        - commandLine+contains: "falcond"
+        - commandLine+contains: "nessusd"
+        - commandLine+contains: "santad"
+        - commandLine+contains: "CbDefense"
+        - commandLine+contains: "td-agent"
+        - commandLine+contains: "packetbeat"
+        - commandLine+contains: "filebeat"
+        - commandLine+contains: "auditbeat"
+        - commandLine+contains: "osqueryd"
+        - commandLine+contains: "BlockBlock"
+        - commandLine+contains: "LuLu"
+    threshold:
+      total:
+        amount: 1

@@ -1,0 +1,14 @@
+name: HEUR_CLIPBOARD_CMDLINE
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - path+ends: "/pbcopy"
+        - path+ends: "/pbpaste"
+    threshold:
+      total:
+        amount: 1

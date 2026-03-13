@@ -1,0 +1,22 @@
+name: HEUR_CALL_COMPILER
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+          - path+ends: "/gcc"
+          - path+ends: "/clang"
+          - path+ends: "/cc"
+          - path+ends: "/g++"
+          - path+ends: "/clang++"
+          - allOf:
+            - path+ends: "/go"
+            - anyOf:
+                - args+contains: "run"
+                - args+contains: "build"
+    threshold:
+      total:
+        amount: 1

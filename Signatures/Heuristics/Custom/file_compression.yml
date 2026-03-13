@@ -1,0 +1,17 @@
+name: HEUR_FILE_COMPRESSION
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - allOf:
+            - path+ends: "/gzip"
+        - allOf:
+            - path+ends: "/bsdtar"
+            - commandLine+contains: "-c"
+    threshold:
+      total:
+        amount: 1

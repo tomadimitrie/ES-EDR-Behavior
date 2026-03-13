@@ -1,0 +1,14 @@
+name: HEUR_EXFIL_WITH_CURL
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/curl"
+        - commandLine+contains: "@"
+    threshold:
+      total:
+        amount: 1

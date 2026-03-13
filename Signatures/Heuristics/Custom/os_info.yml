@@ -1,0 +1,16 @@
+name: HEUR_OS_INFO
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - path+ends: "/uname"
+        - path+ends: "/uptime"
+        - path+ends: "/hostname"
+        - path+ends: "/env"
+    threshold:
+      total:
+        amount: 1

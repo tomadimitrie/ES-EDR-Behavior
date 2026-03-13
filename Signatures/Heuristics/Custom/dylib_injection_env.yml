@@ -1,0 +1,13 @@
+name: HEUR_DYLIB_INJECTION_ENV
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - env+containsInner: "DYLD_INSERT_LIBRARIES"
+    threshold:
+      total:
+        amount: 1

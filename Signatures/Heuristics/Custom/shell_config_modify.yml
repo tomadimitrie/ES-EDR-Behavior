@@ -1,0 +1,14 @@
+name: HEUR_SHELL_CONFIG_MODIFY
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: WRITE
+    restrict:
+      anyOf:
+        - path+ends: ".bash_profile"
+        - path+ends: ".bashrc"
+    threshold:
+      total:
+        amount: 1

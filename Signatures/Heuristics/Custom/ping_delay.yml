@@ -1,0 +1,14 @@
+name: HEUR_PING_DELAY
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/ping"
+        - commandLine+regex: "(\\d{2,})"
+    threshold:
+      total:
+        amount: 1

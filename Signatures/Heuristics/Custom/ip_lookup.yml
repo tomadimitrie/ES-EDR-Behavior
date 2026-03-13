@@ -1,0 +1,13 @@
+name: HEUR_IP_LOOKUP
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - commandLine+contains: "ipinfo.io"
+    threshold:
+      total:
+        amount: 1

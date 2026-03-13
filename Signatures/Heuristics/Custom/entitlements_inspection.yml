@@ -1,0 +1,16 @@
+name: HEUR_INSPECT_ENTITLEMENTS
+points: 20
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+equals: "/usr/bin/codesign"
+        - args+contains: "--entitlements"
+    threshold:
+      total:
+        interval: 1
+        amount: 5
+        

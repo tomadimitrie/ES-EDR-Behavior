@@ -1,0 +1,13 @@
+name: HEUR_WRITE_RC_COMMON
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: WRITE
+    restrict:
+      allOf:
+        - path+equals: "/private/etc/rc.common"
+    threshold:
+      total:
+        amount: 1

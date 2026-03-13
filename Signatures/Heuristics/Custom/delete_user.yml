@@ -1,0 +1,18 @@
+name: HEUR_DELETE_USER
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - allOf:
+            - path+ends: "/dscl"
+            - args+contains: "-delete"
+        - allOf:
+            - path+ends: "/sysadminctl"
+            - args+contains: "-deleteUser"
+    threshold:
+      total:
+        amount: 1

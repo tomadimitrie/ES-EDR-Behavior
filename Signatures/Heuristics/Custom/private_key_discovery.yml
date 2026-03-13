@@ -1,0 +1,15 @@
+name: HEUR_PRIVATE_KEY_DISCOVERY
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - commandLine+contains: "id_rsa"
+        - commandLine+contains: "id_ed25519"
+        - commandLine+contains: ".gnupg"
+    threshold:
+      total:
+        amount: 1

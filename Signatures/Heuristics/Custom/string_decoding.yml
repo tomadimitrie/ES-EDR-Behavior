@@ -1,0 +1,25 @@
+name: HEUR_STRING_DECODING
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - allOf:
+            - path+ends: "/python3"
+            - commandLine+contains: "base64"
+        - allOf:
+            - path+ends: "/perl"
+            - commandLine+contains: "base64"
+        - allOf:
+            - path+ends: "/xxd"
+        - allOf:
+            - path+ends: "/python3"
+            - anyOf:
+                - commandLine+contains: "^"
+                - commandLine+contains: "xor"
+    threshold:
+      total:
+        amount: 1

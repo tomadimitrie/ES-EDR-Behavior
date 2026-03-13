@@ -1,0 +1,21 @@
+name: HEUR_FILE_ENCRYPTION
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - allOf:
+            - path+ends: "/7z"
+            - commandLine+contains: "-p"
+        - allOf:
+            - path+ends: "/openssl"
+            - commandLine+contains: "enc"
+        - allOf:
+            - path+ends: "/zip"
+            - commandLine+contains: "--password"
+    threshold:
+      total:
+        amount: 1

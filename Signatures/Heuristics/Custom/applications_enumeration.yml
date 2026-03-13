@@ -1,0 +1,13 @@
+name: HEUR_ENUM_APPS
+points: 10
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: READDIR
+    restrict:
+      allOf:
+        - path+equals: "/Applications"
+    threshold:
+      total:
+        amount: 1

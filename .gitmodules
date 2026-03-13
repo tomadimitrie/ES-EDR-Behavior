@@ -1,0 +1,6 @@
+[submodule "extern/sigma"]
+	path = extern/sigma
+	url = https://github.com/SigmaHQ/sigma
+[submodule "extern/atomic-red-team"]
+	path = extern/atomic-red-team
+	url = https://github.com/redcanaryco/atomic-red-team

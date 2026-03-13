@@ -1,0 +1,16 @@
+name: HEUR_FORCE_REMOVE
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/rm"
+        - anyOf:
+            - commandLine+contains: "-f"
+            - commandLine+contains: "-rf"
+    threshold:
+      total:
+        amount: 1

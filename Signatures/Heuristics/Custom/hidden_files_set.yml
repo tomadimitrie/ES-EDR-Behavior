@@ -1,0 +1,15 @@
+name: HEUR_SET_HIDDEN_FILE
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/SetFile"
+        - args+contains: "-a"
+        - args+contains: "V"
+    threshold:
+      total:
+        amount: 1

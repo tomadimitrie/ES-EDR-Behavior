@@ -1,0 +1,24 @@
+name: HEUR_REMOTE_FILE_COPY
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      anyOf:
+        - allOf:
+            - path+ends: "/rsync"
+            - commandLine+contains: "@"
+            - commandLine+contains: ":"
+        - allOf:
+            - path+ends: "/scp"
+            - commandLine+contains: "@"
+            - commandLine+contains: ":"
+        - allOf:
+            - path+ends: "/sftp"
+            - commandLine+contains: "@"
+            - commandLine+contains: ":"
+    threshold:
+      total:
+        amount: 1

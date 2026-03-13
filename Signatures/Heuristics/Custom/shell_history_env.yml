@@ -1,0 +1,13 @@
+name: HEUR_SHELL_HISTORY_CONTROL_VIA_ENV_VAR
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - env+containsInner: "HISTCONTROL=ignoreboth"
+    threshold:
+      total:
+        amount: 1

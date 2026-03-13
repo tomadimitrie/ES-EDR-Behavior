@@ -1,0 +1,13 @@
+name: HEUR_SSH_AUTHORIZED_KEYS_USAGE
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - commandLine+contains: ".ssh/authorized_keys"
+    threshold:
+      total:
+        amount: 1

@@ -1,0 +1,14 @@
+name: HEUR_APPLESCRIPT_FAKE_PROMPT
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/osascript"
+        - commandLine+contains: "display dialog"
+    threshold:
+      total:
+        amount: 1

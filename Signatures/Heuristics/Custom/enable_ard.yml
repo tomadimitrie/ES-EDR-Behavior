@@ -1,0 +1,16 @@
+name: HEUR_ENABLE_ARD
+points: 1
+onDuplicate: ignore
+tags: []
+match:
+- event:
+    name: EXEC
+    restrict:
+      allOf:
+        - path+ends: "/perl"
+        - commandLine+contains: "/CoreServices/RemoteManagement/ARDAgent"
+        - commandLine+contains: "kickstart"
+        - commandLine+contains: "-activate"
+    threshold:
+      total:
+        amount: 1
